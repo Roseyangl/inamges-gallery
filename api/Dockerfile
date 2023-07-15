@@ -4,12 +4,11 @@ WORKDIR /app
 
 EXPOSE 5050
 
-
 RUN pip install pipenv 
 COPY Pipfile Pipfile.lock ./
+RUN pipenv install --system --deploy
 
-RUN pipenv requirements > requirements.txt
-RUN pip install -r requirements.txt
+RUN pip install pymongo
 
 COPY . ./
 
